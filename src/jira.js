@@ -25,6 +25,7 @@ export default class JiraApi {
     this.request = options.request || request;
     this.webhookVersion = options.webHookVersion || '1.0';
     this.greenhopperVersion = options.greenhopperVersion || '1.0';
+
     this.baseOptions = {};
 
     if (options.oauth && options.oauth.consumer_key && options.oauth.access_token) {
@@ -51,6 +52,11 @@ export default class JiraApi {
 
     if (options.timeout) {
       this.baseOptions.timeout = options.timeout;
+    }
+
+    if (options.tls) {
+      this.baseOptions.key = options.tls.key
+      this.baseOptions.cert = options.tls.cert
     }
   }
 
